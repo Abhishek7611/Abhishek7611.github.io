@@ -1,5 +1,4 @@
-﻿
-    {
+﻿[{
         "address": "9 Murray Rose,SYDNEY OLYMPIC PARK NSW 2127,AUSTRALIA",
         "country": "",
         "latitude": "-33.84589758",
@@ -19034,5 +19033,4 @@
         "vehicle_type": "",
         "vendor_name": "",
         "zone": ""
-    }
-
+    }]
