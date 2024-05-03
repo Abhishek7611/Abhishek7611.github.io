@@ -10,8 +10,11 @@
   <button onclick="downloadFile()">Download File</button>
   <script>
     
-    function downloadFile(url) {
-  var filename = decodeURIComponent(url.substring(url.lastIndexOf("/") + 1).split("?")[0]);
+  function downloadFile(url) {
+  var parsedUrl = new URL(url);
+  var pathnameParts = parsedUrl.pathname.split('/');
+  var filename = decodeURIComponent(pathnameParts[pathnameParts.length - 1]);
+  
   var xhr = new XMLHttpRequest();
   xhr.responseType = 'blob';
   xhr.onload = function() {
@@ -26,6 +29,7 @@
   xhr.open('GET', url);
   xhr.send();
 }
+
 
 // Example usage
 var url = "https://firebasestorage.googleapis.com/v0/b/somerandombucketname/Images%2FxKweRWIleTQohZggSlAoPiOoU4N2%2FInvoices%2F01-05-2024_16%3A08%3A18.jpg?alt=media&token=4bfcb5cf-4e8a-47f7-adf2-81086f84aaf3";
