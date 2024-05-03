@@ -1,0 +1,31 @@
+<body>
+  <a id = 'tagID' href = '' download = ''>Download</a>
+</body>
+
+
+
+<script>
+//create a reference to the image in the firebase storage by using the url
+var url = "https://firebasestorage.googleapis.com/v0/b/xero-664bc.appspot.com/o/Images%2FxKweRWIleTQohZggSlAoPiOoU4N2%2FInvoices%2F01-05-2024_16%3A08%3A18.jpg?alt=media&token=4bfcb5cf-4e8a-47f7-adf2-81086f84aaf3"
+
+// Get the download URL
+// httpsReference.getDownloadURL()
+//     .then((url) => {
+        // download image directly via url
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+            var blob = xhr.response;
+            //create a file from the returned blob
+            var file = new File([blob], "image name", { type: blob.type });
+            //grab the a tag
+            a1 = document.getElementById('tagID');
+            //set the download attribute of the a tag to the name stored in the file
+            a1.download = file.name;
+            //generate a temp url to host the image for download
+            a1.href = URL.createObjectURL(file);
+        };
+        xhr.open('GET', url);
+        xhr.send();
+ 
+    </script>
